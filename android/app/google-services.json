@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "932808679937",
+    "project_id": "tssperformance-1f5ac",
+    "storage_bucket": "tssperformance-1f5ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932808679937:android:a87b425cea8e04e1a3d600",
+        "android_client_info": {
+          "package_name": "mobile.tssperformance.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvg7W2lnK9CN68p3FIKrXFVpqT0kLvxuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
