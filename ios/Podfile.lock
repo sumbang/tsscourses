@@ -189,12 +189,6 @@ PODS:
   - GoogleUtilities/UserDefaults (7.13.3):
     - GoogleUtilities/Logger
     - GoogleUtilities/Privacy
-  - media_kit_libs_ios_video (1.0.4):
-    - Flutter
-  - media_kit_native_event_loop (1.0.0):
-    - Flutter
-  - media_kit_video (0.0.1):
-    - Flutter
   - nanopb (2.30910.0):
     - nanopb/decode (= 2.30910.0)
     - nanopb/encode (= 2.30910.0)
@@ -211,8 +205,6 @@ PODS:
   - PromisesSwift (2.4.0):
     - PromisesObjC (= 2.4.0)
   - Protobuf (3.27.3)
-  - screen_brightness_ios (0.1.0):
-    - Flutter
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -225,8 +217,6 @@ PODS:
   - video_player_avfoundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - volume_controller (0.0.1):
-    - Flutter
   - wakelock_plus (0.0.1):
     - Flutter
 
@@ -243,18 +233,13 @@ DEPENDENCIES:
   - flutter_cast_video (from `.symlinks/plugins/flutter_cast_video/ios`)
   - flutter_downloader (from `.symlinks/plugins/flutter_downloader/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
-  - media_kit_libs_ios_video (from `.symlinks/plugins/media_kit_libs_ios_video/ios`)
-  - media_kit_native_event_loop (from `.symlinks/plugins/media_kit_native_event_loop/ios`)
-  - media_kit_video (from `.symlinks/plugins/media_kit_video/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
-  - screen_brightness_ios (from `.symlinks/plugins/screen_brightness_ios/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sqflite (from `.symlinks/plugins/sqflite/darwin`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
   - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/darwin`)
-  - volume_controller (from `.symlinks/plugins/volume_controller/ios`)
   - wakelock_plus (from `.symlinks/plugins/wakelock_plus/ios`)
 
 SPEC REPOS:
@@ -308,20 +293,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_downloader/ios"
   fluttertoast:
     :path: ".symlinks/plugins/fluttertoast/ios"
-  media_kit_libs_ios_video:
-    :path: ".symlinks/plugins/media_kit_libs_ios_video/ios"
-  media_kit_native_event_loop:
-    :path: ".symlinks/plugins/media_kit_native_event_loop/ios"
-  media_kit_video:
-    :path: ".symlinks/plugins/media_kit_video/ios"
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   permission_handler_apple:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
-  screen_brightness_ios:
-    :path: ".symlinks/plugins/screen_brightness_ios/ios"
   shared_preferences_foundation:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   sqflite:
@@ -330,8 +307,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
   video_player_avfoundation:
     :path: ".symlinks/plugins/video_player_avfoundation/darwin"
-  volume_controller:
-    :path: ".symlinks/plugins/volume_controller/ios"
   wakelock_plus:
     :path: ".symlinks/plugins/wakelock_plus/ios"
 
@@ -366,9 +341,6 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: f9de05ee17401e3355f68e8fc8b5064d429f5918
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
-  media_kit_libs_ios_video: a5fe24bc7875ccd6378a0978c13185e1344651c1
-  media_kit_native_event_loop: e6b2ab20cf0746eb1c33be961fcf79667304fa2a
-  media_kit_video: 5da63f157170e5bf303bf85453b7ef6971218a2e
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   package_info_plus: 58f0028419748fad15bf008b270aaa8e54380b1c
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
@@ -376,13 +348,11 @@ SPEC CHECKSUMS:
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
   Protobuf: c1cbc880ea7c4e9b157e113515c720a22ee7cf50
-  screen_brightness_ios: 715ca807df953bf676d339f11464e438143ee625
   shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
   sqflite: 673a0e54cc04b7d6dba8d24fb8095b31c3a99eec
   Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
   url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
   video_player_avfoundation: 7c6c11d8470e1675df7397027218274b6d2360b3
-  volume_controller: 531ddf792994285c9b17f9d8a7e4dcdd29b3eae9
   wakelock_plus: 78ec7c5b202cab7761af8e2b2b3d0671be6c4ae1
 
 PODFILE CHECKSUM: 1b1d6de11c3677ceed8acbcf7e5f5f2cf893f75c

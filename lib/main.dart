@@ -17,9 +17,14 @@ import 'package:tsscourses/core/api_response_box.dart';
 import 'package:tsscourses/core/global_translation.dart';
 import 'package:tsscourses/core/my_app_themes.dart';
 import 'package:tsscourses/core/navigation_service.dart';
+import 'package:tsscourses/data/models/requests/logout_request.dart';
+import 'package:tsscourses/domain/entities/message.dart';
+import 'package:tsscourses/domain/entities/message.dart';
 import 'package:tsscourses/firebase_options.dart';
+import 'package:tsscourses/presentation/components/view_models/data_view_model.dart';
 import 'package:tsscourses/presentation/screens/commons/onboarding_screen.dart';
 import 'package:tsscourses/presentation/screens/mobile/dashboard_screen.dart';
+import 'package:tsscourses/presentation/screens/tablette/dashboard_screen_tab.dart';
 import 'package:upgrader/upgrader.dart';
 import 'core/setting.dart';
 import 'core/sizeconfig.dart';
@@ -85,10 +90,32 @@ class MyAppState extends ConsumerState<MyApp> {
   Future<String>  checkifConnect() async {
     final prefs = await SharedPreferences.getInstance();
     String token = prefs.getString("authKey") ?? "";
+
+    LogoutRequest logoutRequest = LogoutRequest(
+        token: token
+    );
+    
+    String connected = "0";
+
+    Future<Message> retour = ref.read(dataViewModelProvider).setCheck(logoutRequest);
+    await retour.then((result) {
+      connected = "1";
+    }).catchError((e) {});
+
     if(token.isEmpty) {
       return "0";
-    } else {
-      return "1";
+    } else  {
+      if(connected == "1") {
+        return "1";
+      } else {
+        prefs.remove('authKey');
+        prefs.remove('nom');
+        prefs.remove('email');
+        prefs.remove('id');
+        prefs.remove('statut');
+        prefs.remove('abonnement');
+          return "0";
+      }
     }
   }
 
@@ -123,7 +150,7 @@ class MyAppState extends ConsumerState<MyApp> {
               builder: (context, snapshot) {
                 if(snapshot.hasData) {
                   if(snapshot.data == "1") {
-                    return UpgradeAlert(child : DashboardScreen(0));
+                    return UpgradeAlert(child : (SizeConfig.isMobile) ? DashboardScreen(0) : DashboardScreenTab(0));
                   } else {
                     return UpgradeAlert(child :  OnboardingScreen());
                   }

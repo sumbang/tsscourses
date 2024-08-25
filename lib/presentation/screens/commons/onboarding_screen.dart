@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:tsscourses/core/setting.dart';
+import 'package:tsscourses/core/sizeconfig.dart';
 import 'package:tsscourses/presentation/screens/mobile/login_screen.dart';
+import 'package:tsscourses/presentation/screens/tablette/login_screen_tab.dart';
 
 class OnboardingScreen extends StatefulHookConsumerWidget {
 
@@ -27,8 +29,8 @@ class OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
             duration: 2000,
-            splash: Image.asset('img/logo.png'),
-            nextScreen:  LoginScreen(),
+            splash: Image.asset('img/playstore.png'),
+            nextScreen:   (SizeConfig.isMobile) ? LoginScreen() : LoginScreenTab(),
             centered: true,
             splashIconSize: 400.0,
             splashTransition: SplashTransition.fadeTransition,

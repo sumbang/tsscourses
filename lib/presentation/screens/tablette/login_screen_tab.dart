@@ -17,22 +17,22 @@ import 'package:tsscourses/presentation/components/widgets/alerte_box.dart';
 import 'package:tsscourses/presentation/components/widgets/bouton.dart';
 import 'package:tsscourses/presentation/components/widgets/input.dart';
 import 'package:tsscourses/presentation/components/widgets/password.dart';
-import 'package:tsscourses/presentation/screens/mobile/dashboard_screen.dart';
+import 'package:tsscourses/presentation/screens/tablette/dashboard_screen_tab.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/setting.dart';
 import '../../../../core/sizeconfig.dart';
 import '../../../../domain/entities/login.dart';
 
-class LoginScreen extends StatefulHookConsumerWidget {
+class LoginScreenTab extends StatefulHookConsumerWidget {
 
-  LoginScreen();
+  LoginScreenTab();
 
   @override
-  LoginScreenState createState() => LoginScreenState();
+  LoginScreenTabState createState() => LoginScreenTabState();
 }
 
-class LoginScreenState extends ConsumerState<LoginScreen> {  
+class LoginScreenTabState extends ConsumerState<LoginScreenTab> {  
 
   final _loginController = TextEditingController();
   final _pwdController = TextEditingController();
@@ -87,7 +87,7 @@ class LoginScreenState extends ConsumerState<LoginScreen> {
         prefs.setString("statut",result.statut.toString());
         prefs.setString("abonnement",result.abonnement.toString());
 
-        Navigator.push(context, MaterialPageRoute(builder: (_) =>  DashboardScreen(0)), );           
+        Navigator.push(context, MaterialPageRoute(builder: (_) =>  DashboardScreenTab(0)), );           
 
       }).catchError((e) {
 
@@ -157,6 +157,14 @@ class LoginScreenState extends ConsumerState<LoginScreen> {
     if(Platform.isIOS) {
       WidgetsBinding.instance!.addPostFrameCallback((_) => initPlugin());
     }
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+    
   }   
 
 

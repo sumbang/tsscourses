@@ -24,16 +24,6 @@ Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
         onTap: () {
 
-          Fluttertoast.showToast(
-                  msg: AppLocalizations.of(context)!.read_5,
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.green,
-                  textColor: Colors.white,
-                  fontSize: 16.0
-              );
-
            Navigator.of(context).push(PageRouteBuilder(
                     opaque: false,
                     pageBuilder: (BuildContext context, _, __) =>
@@ -81,8 +71,6 @@ Widget build(BuildContext context, WidgetRef ref) {
                   ),
                 ),
               ) ,
-
-              const SizedBox(height: 10,),
 
           ],),
         )
