@@ -1,15 +1,15 @@
 import 'package:equatable/equatable.dart';
+import 'package:tsscourses/domain/entities/lesson.dart';
 
 class Formation extends Equatable {
 
-  final String id;
+  final int id;
   final String titre;
   final String resume;
   final String banner;
   final int lessons;
   final int chapitres;
-  final int statut;
-  final int finish;
+  final List<Lesson> contenus;
 
   const Formation({
     required this.id,
@@ -18,8 +18,7 @@ class Formation extends Equatable {
     required this.banner,
     required this.lessons,
     required this.chapitres,
-    required this.statut,
-    required this.finish
+    required this.contenus
   });
   
   @override
@@ -31,8 +30,7 @@ class Formation extends Equatable {
     resume,
     lessons,
     chapitres,
-    statut,
-    finish
+    contenus
   ];
 
 }

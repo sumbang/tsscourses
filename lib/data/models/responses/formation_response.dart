@@ -1,16 +1,18 @@
 import 'package:equatable/equatable.dart';
 import 'package:tsscourses/domain/entities/formation.dart';
+import 'package:tsscourses/domain/entities/lesson.dart';
+
+import 'lesson_response.dart';
 
 class FormationResponse extends Equatable {
 
-  final String id;
+  final int id;
   final String titre;
   final String resume;
   final String banner;
   final int lessons;
   final int chapitres;
-  final int statut;
-  final int finish;
+  final List<LessonResponse> contenus;
 
   const FormationResponse({
     required this.id,
@@ -19,8 +21,7 @@ class FormationResponse extends Equatable {
     required this.banner,
     required this.lessons,
     required this.chapitres,
-    required this.statut,
-    required this.finish
+    required this.contenus
   });
   
   @override
@@ -32,21 +33,19 @@ class FormationResponse extends Equatable {
     resume,
     lessons,
     chapitres,
-    statut,
-    finish
+    lessons
   ];
 
 
  factory FormationResponse.fromJson(Map<String, dynamic> json) =>
       FormationResponse(
-        id: json['id'] , 
-        titre: (json['titre'] == null) ? "" : json['titre'], 
-        resume: (json['resume'] == null) ? "" :json['resume'], 
-        banner: (json['banner'] == null) ? "" :json['banner'], 
-        lessons: (json['lessons'] == null) ? 0 :json['lessons'], 
-        chapitres: (json['chapitres'] == null) ? 0 :json['chapitres'], 
-        statut: (json['statut'] == null) ? 0 :json['statut'], 
-        finish: (json['finish'] == null) ? 0 :json['finish']
+        id: json['course_id'] , 
+        titre: (json['course_title'] == null) ? "" : json['course_title'], 
+        resume: (json['course_resume'] == null) ? "" :json['course_resume'], 
+        banner: (json['course_banner'] == null) ? "" :json['course_banner'], 
+        lessons: (json['course_lesson'] == null) ? 0 :json['course_lesson'], 
+        chapitres: (json['course_chapitre'] == null) ? 0 :json['course_chapitre'], 
+        contenus: List<LessonResponse>.from(json["course_json"].map((x) => LessonResponse.fromJson(x))),
   );
 
 
@@ -58,8 +57,7 @@ class FormationResponse extends Equatable {
       banner : banner,
       lessons: lessons,
       chapitres: chapitres,
-      statut: statut,
-      finish: finish
+      contenus: List<Lesson>.from(contenus.map((x) => x.toEntity())),
     );
   }
 

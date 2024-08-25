@@ -5,18 +5,14 @@ class Chapitre extends Equatable {
 
   final String id;
   final String titre;
-  final String resume;
   final String video;
-  final int statut;
-  final int  activite;
+  final List<String> students;
 
   const Chapitre ({
     required this.id,
     required this.titre,
-    required this.resume,
-    required this.video,
-    required this.activite,
-    required this.statut
+    required this.students,
+    required this.video
   });
   
   @override
@@ -25,9 +21,7 @@ class Chapitre extends Equatable {
     id,
     titre,
     video,
-    resume,
-    statut,
-    activite,
+    students
   ];
 
 }

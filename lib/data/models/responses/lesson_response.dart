@@ -1,30 +1,20 @@
 import 'package:equatable/equatable.dart';
+import 'package:tsscourses/data/models/responses/chapitre_response.dart';
+import 'package:tsscourses/domain/entities/chapitre.dart';
 import 'package:tsscourses/domain/entities/lesson.dart';
 
 class LessonResponse extends Equatable {
 
   final String id;
   final String titre;
-  final String resume;
-  final int chapitre;
-  final int debut;
-  final String debutread;
-  final String ecart;
-  final int actuel;
-  final int level;
-  final String statut;
+  final List<ChapitreResponse> chapitres;
+  bool expanded;
 
-  const LessonResponse({
+ LessonResponse({
     required this.id,
     required this.titre,
-    required this.resume,
-    required this.chapitre,
-    required this.debut,
-    required this.debutread,
-    required this.ecart,
-    required this.actuel,
-    required this.level,
-    required this.statut
+    required this.chapitres,
+    this.expanded = false
   });
   
   @override
@@ -32,28 +22,14 @@ class LessonResponse extends Equatable {
   List<Object?> get props => [
     id,
     titre,
-    chapitre,
-    resume,
-    debut,
-    debutread,
-    statut,
-    ecart,
-    actuel,
-    level
+    chapitres
   ];
 
   factory LessonResponse.fromJson(Map<String, dynamic> json) =>
       LessonResponse(
-        id: json['id'] , 
-        titre: (json['titre'] == null) ? "" : json['titre'], 
-        resume: (json['resume'] == null) ? "" :json['resume'], 
-        chapitre: (json['chapitre'] == null) ? 0 :json['chapitre'], 
-        debut: (json['debut'] == null) ? 0 :json['debut'], 
-        debutread: (json['debutread'] == null) ? 0 :json['debutread'], 
-        statut: (json['statut'] == null) ? "" :json['statut'], 
-        ecart: (json['ecart'] == null) ? "" :json['ecart'], 
-        level: (json['level'] == null) ? 0 :json['level'],
-        actuel: (json['actuel'] == null) ? 0 :json['actuel']
+        id: json['lesson_id'] , 
+        titre: (json['lesson_title'] == null) ? "" : json['lesson_title'], 
+        chapitres: List<ChapitreResponse>.from(json["lesson_chapitre"].map((x) => ChapitreResponse.fromJson(x))),
   );
 
 
@@ -61,14 +37,8 @@ class LessonResponse extends Equatable {
     return Lesson(
       id: id, 
       titre: titre, 
-      resume : resume,
-      chapitre : chapitre,
-      debut: debut,
-      debutread: debutread,
-      statut: statut,
-      level: level,
-      actuel: actuel,
-      ecart: ecart
+      chapitres : List<Chapitre>.from(chapitres.map((x) => x.toEntity())),
+      expanded: expanded
     );
   }
 

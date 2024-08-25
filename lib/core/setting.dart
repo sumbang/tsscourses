@@ -34,16 +34,14 @@ class Setting {
     return List.generate(len, (index) => _chars[r.nextInt(_chars.length)]).join();
   }
 
-  static const int cacheTimeout = 15 * 60 * 1000; // 15 minutes
-  static const int cacheTimeout2 = 1 * 60 * 60 * 1000; // 1 hour
-  static const int cacheTimeout3 = 2 * 60 * 1000; // 1 hour
+  static const int cacheTimeout = 1 * 60 * 1000; // 1 hour
 
   static const bgColor = Color(0xFF000000);
-  static const primaryColor = Color(0xFFcd005f);  
+  static const primaryColor = Color(0xFFd60d0d);  
   static const white = Color(0xFFFFFFFF);
-  static const bottomNavBarbg = Color(0xFF191919);
-  static const gris = Color(0xFFF4F4F4);
-  static const secondColor = Color(0xFFe48cc4);
+  static const bottomNavBarbg = Color(0xFFd5bcbc);
+  static const gris = Color(0xFF541010);
+  static const secondColor = Color(0xFFd5bcbc);
   static const tailleRequest = 30;
   static const encryptKey = "WELCOMEONWOURITV";
   static const ivKey = "fedcba9876543210";
@@ -51,8 +49,11 @@ class Setting {
   static String ArrayToString(List<String> list) {
     String retour = "";
     for(int i = 0; i < list.length; i++) {
-      if(i != list.length - 1) retour+= "${list[i].trim()}, ";
-      else retour+= list[i].trim();
+      if(i != list.length - 1) {
+        retour+= "${list[i].trim()}, ";
+      } else {
+        retour+= list[i].trim();
+      }
     }
     return retour;
   }

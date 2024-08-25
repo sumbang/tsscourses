@@ -1,29 +1,18 @@
 import 'package:equatable/equatable.dart';
+import 'package:tsscourses/domain/entities/chapitre.dart';
 
 class Lesson extends Equatable {
 
   final String id;
   final String titre;
-  final String resume;
-  final int chapitre;
-  final int debut;
-  final String debutread;
-  final String ecart;
-  final int actuel;
-  final int level;
-  final String statut;
+  final List<Chapitre> chapitres;
+  bool expanded;
 
-  const Lesson({
+   Lesson({
     required this.id,
     required this.titre,
-    required this.resume,
-    required this.chapitre,
-    required this.debut,
-    required this.debutread,
-    required this.ecart,
-    required this.actuel,
-    required this.level,
-    required this.statut
+    required this.chapitres,
+    this.expanded = false
   });
   
   @override
@@ -31,14 +20,9 @@ class Lesson extends Equatable {
   List<Object?> get props => [
     id,
     titre,
-    chapitre,
-    resume,
-    debut,
-    debutread,
-    statut,
-    ecart,
-    actuel,
-    level
+    chapitres,
+    expanded
   ];
+
 
 }

@@ -5,18 +5,14 @@ class ChapitreResponse extends Equatable {
 
   final String id;
   final String titre;
-  final String resume;
   final String video;
-  final int statut;
-  final int  activite;
+  final List<String> students;
 
   const ChapitreResponse({
     required this.id,
     required this.titre,
-    required this.resume,
     required this.video,
-    required this.activite,
-    required this.statut
+    required this.students
   });
   
   @override
@@ -25,19 +21,15 @@ class ChapitreResponse extends Equatable {
     id,
     titre,
     video,
-    resume,
-    statut,
-    activite,
+    students
   ];
 
   factory ChapitreResponse.fromJson(Map<String, dynamic> json) =>
       ChapitreResponse(
-        id: json['id'] , 
-        titre: (json['titre'] == null) ? "" : json['titre'], 
-        resume: (json['resume'] == null) ? "" :json['resume'], 
-        video: (json['video'] == null) ? "" :json['video'], 
-        activite: (json['activite'] == null) ? 0 :json['activite'], 
-        statut: (json['statut'] == null) ? "" :json['statut'], 
+        id: json['chapitre_id'] , 
+        titre: (json['chapitre_titre'] == null) ? "" : json['chapitre_titre'], 
+        video: (json['chapitre_video'] == null) ? "" : json['chapitre_video'], 
+        students: List<String>.from(json["has_completed"].map((x) => x)),
   );
 
 
@@ -45,9 +37,7 @@ class ChapitreResponse extends Equatable {
     return Chapitre(
       id: id, 
       titre: titre, 
-      resume : resume,
-      activite : activite,
-      statut: statut,
+      students : students,
       video: video
     );
   }
