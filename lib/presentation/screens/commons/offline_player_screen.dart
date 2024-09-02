@@ -114,23 +114,6 @@ class OfflinePlayerScreenState extends State<OfflinePlayerScreen1> {
     WakelockPlus.enable();
     super.initState();
 
-  /*  _getDossier();
-
-    final File file = File(dossier + "/" + filename);
-    if(!file.existsSync()) {
-      print("fichier non existant");
-    } else print("fichier existant");
-
-    _controller = VideoPlayerController.file(file)
-      ..initialize().then((_) {
-        setState(() {
-          _isContainerVisible = true;
-        });
-      });
-      
-    _controller.setLooping(false);
-    _controller.addListener(checkVideo);*/
-
     initVideo();
     
     SystemChrome.setPreferredOrientations([

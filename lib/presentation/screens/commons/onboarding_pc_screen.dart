@@ -1,28 +1,23 @@
-
-import 'dart:io';
-
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:tsscourses/core/setting.dart';
-import 'package:tsscourses/core/sizeconfig.dart';
-import 'package:tsscourses/presentation/screens/mobile/login_screen.dart';
-import 'package:tsscourses/presentation/screens/tablette/login_screen_tab.dart';
+import 'package:tsscourses/presentation/screens/pc/login_screen_pc.dart';
 
-class OnboardingScreen extends StatefulHookConsumerWidget {
+class OnboardingPcScreen extends StatefulHookConsumerWidget {
 
-  OnboardingScreen();
+  OnboardingPcScreen();
 
   @override
-  OnboardingScreenState createState() => new OnboardingScreenState();
+  OnboardingPcScreenState createState() => new OnboardingPcScreenState();
 }
 
-class OnboardingScreenState extends ConsumerState<OnboardingScreen> {
+class OnboardingPcScreenState extends ConsumerState<OnboardingPcScreen> {
   
   bool isconnected = false;
 
-  OnboardingScreenState();
+  OnboardingPcScreenState();
 
 
   @override
@@ -30,7 +25,7 @@ class OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     return AnimatedSplashScreen(
             duration: 2000,
             splash: Image.asset('img/playstore.png'),
-            nextScreen: (SizeConfig.isMobile) ? LoginScreen() : LoginScreenTab(),
+            nextScreen:   LoginScreenPc(),
             centered: true,
             splashIconSize: 400.0,
             splashTransition: SplashTransition.fadeTransition,

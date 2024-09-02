@@ -22,6 +22,7 @@ final remoteApiProvider = Provider<RemoteApi>((ref) => RemoteApi());
 class RemoteApi  {
 
   static const String url = 'https://tssperformance.com/gestion/api/v2';
+  static const String url2 = 'https://tssperformance.com/api/v1/check.php';
   static const String vimeoUrl = 'https://api.vimeo.com/videos';
   static const String vimeoApiKey = String.fromEnvironment("API_KEY_VIMEO");
 
@@ -93,7 +94,7 @@ class RemoteApi  {
     else {
 
       try { 
-      
+         print("token : ${token}");
         final response = await Dio().get('$url/comptes/free-courses', options: Options(headers: {'Authorization': 'Bearer $token','Content-Type':'application/json'}, ),);
         final results = List<Map<String, dynamic>>.from(response.data);
         
@@ -142,7 +143,6 @@ class RemoteApi  {
 
     if (cachedResponse.url.isNotEmpty && (DateTime.now().millisecondsSinceEpoch - cachedResponse.timestamp < Setting.cacheTimeout)  ) {
       final results = List<Map<String, dynamic>>.from(json.decode(cachedResponse.response));
-      print("ici");
       return results.map((e) => FormationResponse.fromJson(e)).toList();
     }
 
@@ -150,6 +150,8 @@ class RemoteApi  {
 
       try { 
       
+
+         print("token1 : ${token}");
         final response = await Dio().get('$url/comptes/my-courses', options: Options(headers: {'Authorization': 'Bearer $token','Content-Type':'application/json'}, ),);
         final results = List<Map<String, dynamic>>.from(response.data);
         

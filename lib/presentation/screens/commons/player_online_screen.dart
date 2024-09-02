@@ -14,7 +14,6 @@ import 'package:tsscourses/core/setting.dart';
 import 'package:tsscourses/core/sizeconfig.dart';
 import 'package:tsscourses/core/vimeo_file.dart';
 import 'package:tsscourses/data/models/requests/logout_request.dart';
-import 'package:tsscourses/domain/entities/chapitre.dart';
 import 'package:tsscourses/domain/entities/message.dart';
 import 'package:tsscourses/main.dart';
 import 'package:tsscourses/presentation/components/view_models/data_view_model.dart';
@@ -158,8 +157,8 @@ class PlayerOnlineScreenState extends ConsumerState<PlayerOnlineScreen> {
 }
   
   _checker () {
-   // print("mise a jour du temps de lecture");
-    Future.delayed(const Duration(minutes: 15), () {
+    //print("delete mise a jour du temps de lecture");
+    Future.delayed(const Duration(minutes: 5), () {
          if(mounted) _checkifToken();
     });
   }
@@ -230,7 +229,7 @@ class PlayerOnlineScreenState extends ConsumerState<PlayerOnlineScreen> {
     
   }
 
-   void checkVideo(){
+  void checkVideo(){
     if (_controller!.value.isPlaying) {
       if(_controller!.value.position.inSeconds >= _controller!.value.duration.inSeconds) {
                 if(SizeConfig.isMobile) {

@@ -4,18 +4,18 @@ import 'package:tsscourses/core/setting.dart';
 import 'package:tsscourses/core/sizeconfig.dart';
 import 'package:tsscourses/domain/entities/formation.dart';
 import 'package:tsscourses/presentation/components/view_models/data_view_model.dart';
-import 'package:tsscourses/presentation/components/widgets/course_box.dart';
+import 'package:tsscourses/presentation/components/widgets/course_box_pc.dart';
 import 'package:tsscourses/presentation/components/widgets/empty_data.dart';
 
-class FreeFragmentTab extends StatefulHookConsumerWidget {  
+class FreeFragmentPc extends StatefulHookConsumerWidget {  
   
-  FreeFragmentTab();
+  FreeFragmentPc();
 
   @override
-  FreeFragmentTabState createState() => FreeFragmentTabState();
+  FreeFragmentPcState createState() => FreeFragmentPcState();
 }
 
-class FreeFragmentTabState extends ConsumerState<FreeFragmentTab> {
+class FreeFragmentPcState extends ConsumerState<FreeFragmentPc> {
 
   List<Formation> courses = []; 
   bool isSearch = true;
@@ -58,15 +58,15 @@ class FreeFragmentTabState extends ConsumerState<FreeFragmentTab> {
       child : (isSearch) ? const Center( child: CircularProgressIndicator(color: Setting.primaryColor,), ) :  (courses.isEmpty) ? 
           EmptyData() : SingleChildScrollView(
           child: GridView.count(
-                        crossAxisCount: (SizeConfig.isPortrait) ? 2 : 3,
+                        crossAxisCount: 4,
                         padding: const EdgeInsets.all(10),
-                        childAspectRatio:  (SizeConfig.isPortrait) ? 1.5 : 1.2,
+                        childAspectRatio:  1.7,
                         mainAxisSpacing: 5,
                         controller:ScrollController(keepScrollOffset: false),
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         children: courses.map((Formation data) {
-                         return Container(margin: const EdgeInsets.only(left: 10, right: 10), child: CourseBox(item:  data));
+                         return Container(margin: const EdgeInsets.only(left: 10, right: 10), child: CourseBoxPc(item:  data));
                         }).toList()) )
     );
   }

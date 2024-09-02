@@ -125,7 +125,7 @@ void initState()  {
           print(isHidden);
         });
 
-         prefs.remove('authKey');
+        prefs.remove('authKey');
         prefs.remove('nom');
         prefs.remove('email');
         prefs.remove('id');

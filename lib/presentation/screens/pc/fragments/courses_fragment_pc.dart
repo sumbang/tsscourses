@@ -4,18 +4,18 @@ import 'package:tsscourses/core/setting.dart';
 import 'package:tsscourses/core/sizeconfig.dart';
 import 'package:tsscourses/domain/entities/formation.dart';
 import 'package:tsscourses/presentation/components/view_models/data_view_model.dart';
-import 'package:tsscourses/presentation/components/widgets/course_box.dart';
+import 'package:tsscourses/presentation/components/widgets/course_box_pc.dart';
 import 'package:tsscourses/presentation/components/widgets/empty_data.dart';
 
-class FreeFragmentTab extends StatefulHookConsumerWidget {  
+class CoursesFragmentPc extends StatefulHookConsumerWidget {  
   
-  FreeFragmentTab();
+  CoursesFragmentPc();
 
   @override
-  FreeFragmentTabState createState() => FreeFragmentTabState();
+  CoursesFragmentPcState createState() => CoursesFragmentPcState();
 }
 
-class FreeFragmentTabState extends ConsumerState<FreeFragmentTab> {
+class CoursesFragmentPcState extends ConsumerState<CoursesFragmentPc> {
 
   List<Formation> courses = []; 
   bool isSearch = true;
@@ -25,7 +25,7 @@ class FreeFragmentTabState extends ConsumerState<FreeFragmentTab> {
 
       isSearch = true; 
   
-      Future<List<Formation>> retour = ref.read(dataViewModelProvider).getFreeCourses();
+      Future<List<Formation>> retour = ref.read(dataViewModelProvider).getMyCourses();
       await retour.then((result) {
            setState(() {
             for(int i = 0; i < result.length; i++) {
@@ -55,18 +55,18 @@ class FreeFragmentTabState extends ConsumerState<FreeFragmentTab> {
     return Container(
       margin: const EdgeInsets.all(5),
       width: MediaQuery.of(context).size.width,
-      child : (isSearch) ? const Center( child: CircularProgressIndicator(color: Setting.primaryColor,), ) :  (courses.isEmpty) ? 
-          EmptyData() : SingleChildScrollView(
-          child: GridView.count(
-                        crossAxisCount: (SizeConfig.isPortrait) ? 2 : 3,
+      child : 
+          (isSearch) ? const Center( child: CircularProgressIndicator(color: Setting.primaryColor,), ) :  (courses.isEmpty) ? 
+          EmptyData() : SingleChildScrollView( child : GridView.count(
+                        crossAxisCount: 4,
                         padding: const EdgeInsets.all(10),
-                        childAspectRatio:  (SizeConfig.isPortrait) ? 1.5 : 1.2,
+                        childAspectRatio:  1.7,
                         mainAxisSpacing: 5,
                         controller:ScrollController(keepScrollOffset: false),
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         children: courses.map((Formation data) {
-                         return Container(margin: const EdgeInsets.only(left: 10, right: 10), child: CourseBox(item:  data));
+                          return Container(margin: const EdgeInsets.only(left: 10, right: 10), child: CourseBoxPc(item:  data));
                         }).toList()) )
     );
   }

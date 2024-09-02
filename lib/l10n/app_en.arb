@@ -3,7 +3,7 @@
   "connexion_title": "CONNECTION",
   "next_title": "NEXT",
   "retry": "Try again",
-  "login": "Email address",
+  "login": "Email address or Username",
   "password": "Password",
   "login_bt": "Login",
   "menu_1": "About us",

@@ -1,5 +1,6 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tsscourses/core/setting.dart';
 import 'package:tsscourses/core/sizeconfig.dart';
@@ -9,19 +10,19 @@ import 'package:tsscourses/domain/entities/lesson.dart';
 import 'package:tsscourses/presentation/components/widgets/chapitre_widget.dart';
 import 'package:tsscourses/presentation/components/widgets/lesson_widget.dart';
 
-class LearningScreen extends StatefulHookConsumerWidget {
+class LearningScreenPc extends StatefulHookConsumerWidget {
 
   Formation formation;
-  LearningScreen(this.formation);
+  LearningScreenPc(this.formation);
 
   @override
-  LearningScreenState createState() => new LearningScreenState(this.formation);
+  LearningScreenPcState createState() => new LearningScreenPcState(this.formation);
 }
 
-class LearningScreenState extends ConsumerState<LearningScreen> {
+class LearningScreenPcState extends ConsumerState<LearningScreenPc> {
 
  Formation formation;
- LearningScreenState(this.formation);
+ LearningScreenPcState(this.formation);
 
  List<Widget> buildFormation(Formation formation) {
 
@@ -45,6 +46,14 @@ class LearningScreenState extends ConsumerState<LearningScreen> {
   @override
   void initState() {
     super.initState();
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+    
   }
 
   @override

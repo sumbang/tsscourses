@@ -17,22 +17,21 @@ import 'package:tsscourses/presentation/components/widgets/alerte_box.dart';
 import 'package:tsscourses/presentation/components/widgets/bouton.dart';
 import 'package:tsscourses/presentation/components/widgets/input.dart';
 import 'package:tsscourses/presentation/components/widgets/password.dart';
-import 'package:tsscourses/presentation/screens/tablette/dashboard_screen_tab.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:tsscourses/presentation/screens/pc/dashboard_screen_pc.dart';
 
 import '../../../../core/setting.dart';
 import '../../../../core/sizeconfig.dart';
 import '../../../../domain/entities/login.dart';
 
-class LoginScreenTab extends StatefulHookConsumerWidget {
+class LoginScreenPc extends StatefulHookConsumerWidget {
 
-  LoginScreenTab();
+  LoginScreenPc();
 
   @override
-  LoginScreenTabState createState() => LoginScreenTabState();
+  LoginScreenPcState createState() => LoginScreenPcState();
 }
 
-class LoginScreenTabState extends ConsumerState<LoginScreenTab> {  
+class LoginScreenPcState extends ConsumerState<LoginScreenPc> {  
 
   final _loginController = TextEditingController();
   final _pwdController = TextEditingController();
@@ -87,7 +86,7 @@ class LoginScreenTabState extends ConsumerState<LoginScreenTab> {
         prefs.setString("statut",result.statut.toString());
         prefs.setString("abonnement",result.abonnement.toString());
 
-        Navigator.push(context, MaterialPageRoute(builder: (_) =>  DashboardScreenTab(0)), );           
+        Navigator.push(context, MaterialPageRoute(builder: (_) =>  DashboardScreenPc(0)), );           
 
       }).catchError((e) {
 
@@ -123,47 +122,10 @@ class LoginScreenTabState extends ConsumerState<LoginScreenTab> {
                                               
   }
 
-    String _authStatus = 'Unknown';
-
-  Future<void> initPlugin() async {
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-       print("tracking debut");
-      final TrackingStatus status = await AppTrackingTransparency.trackingAuthorizationStatus;
-      setState(() => _authStatus = '$status');
-      // If the system can show an authorization request dialog
-      if (status == TrackingStatus.notDetermined) {
-        // Show a custom explainer dialog before the system dialog
-       // if (await showCustomTrackingDialog(context)) {
-          // Wait for dialog popping animation
-         // await Future.delayed(const Duration(milliseconds: 200));
-          // Request system's tracking authorization dialog
-          final TrackingStatus status =
-              await AppTrackingTransparency.requestTrackingAuthorization();
-          setState(() => _authStatus = '$status');
-       // }
-      }
-    } on PlatformException {
-      setState(() => _authStatus = 'PlatformException was thrown');
-      print("tracking error");
-    }
-
-    final uuid = await AppTrackingTransparency.getAdvertisingIdentifier();
-  }
-
   @override
   void initState()  {
     super.initState();
-    if(Platform.isIOS) {
-      WidgetsBinding.instance!.addPostFrameCallback((_) => initPlugin());
-    }
-
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight,
-    ]);
+    
     
   }   
 
@@ -206,7 +168,7 @@ class LoginScreenTabState extends ConsumerState<LoginScreenTab> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             SizedBox(
-              height: (SizeConfig.isPortrait) ? (25 * SizeConfig.heightMultiplier) : (7 * SizeConfig.heightMultiplier),
+              height: (SizeConfig.isPortrait) ? (40 * SizeConfig.heightMultiplier) : (10 * SizeConfig.heightMultiplier),
             ),
              Center(
               child:  Image.asset(

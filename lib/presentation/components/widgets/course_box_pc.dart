@@ -6,14 +6,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tsscourses/core/setting.dart';
 import 'package:tsscourses/core/sizeconfig.dart';
 import 'package:tsscourses/domain/entities/formation.dart';
-import 'package:tsscourses/presentation/screens/mobile/learning_screen.dart';
-import 'package:tsscourses/presentation/screens/tablette/learning_screen_tab.dart';
+import 'package:tsscourses/presentation/screens/pc/learning_screen_pc.dart';
 
-class CourseBox extends HookConsumerWidget {
+class CourseBoxPc extends HookConsumerWidget {
 
 final Formation item;
 
-CourseBox({
+CourseBoxPc({
     required this.item
 }): super();
 
@@ -24,17 +23,10 @@ Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
         onTap: () {
 
-        if((SizeConfig.isMobile)) {
-            Navigator.of(context).push(PageRouteBuilder(
+       Navigator.of(context).push(PageRouteBuilder(
                     opaque: false,
                     pageBuilder: (BuildContext context, _, __) =>
-                       LearningScreen(item)));
-          } else {
-            Navigator.of(context).push(PageRouteBuilder(
-                    opaque: false,
-                    pageBuilder: (BuildContext context, _, __) =>
-                       LearningScreenTab(item)));
-          }
+                       LearningScreenPc(item)));
          },
         child: Container(
           width: MediaQuery.of(context).size.width ,

@@ -59,14 +59,14 @@ class CoursesFragmentTabState extends ConsumerState<CoursesFragmentTab> {
           (isSearch) ? const Center( child: CircularProgressIndicator(color: Setting.primaryColor,), ) :  (courses.isEmpty) ? 
           EmptyData() : SingleChildScrollView( child : GridView.count(
                         crossAxisCount: (SizeConfig.isPortrait) ? 2 : 3,
-                        padding: const EdgeInsets.all(0),
-                        childAspectRatio: 1,
+                        padding: const EdgeInsets.all(10),
+                        childAspectRatio:  (SizeConfig.isPortrait) ? 1.5 : 1.2,
                         mainAxisSpacing: 5,
                         controller:ScrollController(keepScrollOffset: false),
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         children: courses.map((Formation data) {
-                          return CourseBox(item:  data);
+                          return Container(margin: const EdgeInsets.only(left: 10, right: 10), child: CourseBox(item:  data));
                         }).toList()) )
     );
   }

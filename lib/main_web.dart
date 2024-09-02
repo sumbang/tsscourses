@@ -5,13 +5,10 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:overlay_support/overlay_support.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tsscourses/core/api_response_box.dart';
 import 'package:tsscourses/core/global_translation.dart';
@@ -19,12 +16,10 @@ import 'package:tsscourses/core/my_app_themes.dart';
 import 'package:tsscourses/core/navigation_service.dart';
 import 'package:tsscourses/data/models/requests/logout_request.dart';
 import 'package:tsscourses/domain/entities/message.dart';
-import 'package:tsscourses/domain/entities/message.dart';
 import 'package:tsscourses/firebase_options.dart';
 import 'package:tsscourses/presentation/components/view_models/data_view_model.dart';
-import 'package:tsscourses/presentation/screens/commons/onboarding_screen.dart';
-import 'package:tsscourses/presentation/screens/mobile/dashboard_screen.dart';
-import 'package:tsscourses/presentation/screens/tablette/dashboard_screen_tab.dart';
+import 'package:tsscourses/presentation/screens/commons/onboarding_pc_screen.dart';
+import 'package:tsscourses/presentation/screens/pc/dashboard_screen_pc.dart';
 import 'package:upgrader/upgrader.dart';
 import 'core/setting.dart';
 import 'core/sizeconfig.dart';
@@ -35,10 +30,6 @@ Future<void> main() async {
 
     WidgetsFlutterBinding.ensureInitialized();
 
-    await FlutterDownloader.initialize(
-        debug: true // optional: set false to disable printing logs to console
-        ); 
-    
     await Firebase.initializeApp( options: DefaultFirebaseOptions.currentPlatform,);
 
     // Pass all uncaught errors from the framework to Crashlytics.
@@ -46,23 +37,13 @@ Future<void> main() async {
 
     await Upgrader.clearSavedSettings();
 
-    final appDocumentDirectory = await getApplicationDocumentsDirectory();
-    Hive.init(appDocumentDirectory.path);
+    window.document.onContextMenu.listen((evt) => evt.preventDefault());
+
     Hive.registerAdapter(ApiResponseBoxAdapter());
   
     HttpOverrides.global = MyHttpOverrides();
     setupLocator();
-
-    final firstView = WidgetsBinding.instance.platformDispatcher.views.first;
-    final logicalShortestSide = firstView.physicalSize.shortestSide / firstView.devicePixelRatio;
-
-    if(logicalShortestSide <= 550) {
-              SystemChrome.setPreferredOrientations([
-                DeviceOrientation.portraitUp,
-                DeviceOrientation.portraitDown,
-              ]); 
-    }
-     
+    
     runApp(
       ProviderScope(child: MyApp())
     );
@@ -149,9 +130,9 @@ class MyAppState extends ConsumerState<MyApp> {
               builder: (context, snapshot) {
                 if(snapshot.hasData) {
                   if(snapshot.data == "1") {
-                    return UpgradeAlert(child : (SizeConfig.isMobile) ? DashboardScreen(0) : DashboardScreenTab(0));
+                    return DashboardScreenPc(0);
                   } else {
-                    return UpgradeAlert(child :  OnboardingScreen());
+                    return OnboardingPcScreen();
                   }
                 }
 

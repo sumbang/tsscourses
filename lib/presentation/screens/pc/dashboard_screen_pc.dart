@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -14,23 +15,22 @@ import 'package:tsscourses/domain/entities/message.dart';
 import 'package:tsscourses/presentation/components/view_models/data_view_model.dart';
 import 'package:tsscourses/presentation/components/widgets/alerte_action.dart';
 import 'package:tsscourses/presentation/components/widgets/alerte_box.dart';
-import 'package:tsscourses/presentation/screens/commons/onboarding_screen.dart';
-import 'package:tsscourses/presentation/screens/mobile/fragments/courses_fragment.dart';
-import 'package:tsscourses/presentation/screens/mobile/fragments/download_fragment.dart';
-import 'package:tsscourses/presentation/screens/mobile/fragments/free_fragment.dart';
+import 'package:tsscourses/presentation/screens/commons/onboarding_pc_screen.dart';
+import 'package:tsscourses/presentation/screens/pc/fragments/courses_fragment_pc.dart';
+import 'package:tsscourses/presentation/screens/pc/fragments/free_fragment_pc.dart';
 
 
-class DashboardScreen extends StatefulHookConsumerWidget {
+class DashboardScreenPc extends StatefulHookConsumerWidget {
   int currentTab;
-   DashboardScreen(this.currentTab);
+   DashboardScreenPc(this.currentTab);
   @override
-  DashboardScreen1State createState() =>new DashboardScreen1State(this.currentTab);
+  DashboardScreenPcState createState() =>new DashboardScreenPcState(this.currentTab);
 }
 
-class DashboardScreen1State extends ConsumerState<DashboardScreen> {
+class DashboardScreenPcState extends ConsumerState<DashboardScreenPc> {
 
   int currentTab;
-  DashboardScreen1State(this.currentTab);
+  DashboardScreenPcState(this.currentTab);
   GetIt getIt = GetIt.instance;
 
 @override
@@ -61,16 +61,15 @@ void initState()  {
   setState(() {
     _selectedIndex = currentTab;
   });
+    
 }
 
   _getDrawerItemWidget(int pos) {
     switch (pos) {
       case 0:
-        return CoursesFragment();
+        return CoursesFragmentPc();
       case 1:
-        return FreeFragment();
-      case 2:
-        return DownloadFragment();
+        return FreeFragmentPc();
       default:
     }
   }
@@ -88,8 +87,6 @@ void initState()  {
         return AppLocalizations.of(context)!.movie_1;
       case 1:
         return AppLocalizations.of(context)!.movie_2;
-      case 2:
-        return AppLocalizations.of(context)!.movie_3;
       default: 
         return "";
     }
@@ -125,7 +122,7 @@ void initState()  {
 
         Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => OnboardingScreen()),
+                      MaterialPageRoute(builder: (_) => OnboardingPcScreen()),
                     );
 
     
@@ -172,8 +169,7 @@ void initState()  {
       
     final List<Destination> allDestinations = <Destination>[
       Destination(AppLocalizations.of(context)!.movie_1, Icons.list, Colors.white),
-      Destination(AppLocalizations.of(context)!.movie_2, Icons.movie, Colors.white),
-      Destination(AppLocalizations.of(context)!.movie_3, Icons.download, Colors.white),
+      Destination(AppLocalizations.of(context)!.movie_2, Icons.movie, Colors.white)
     ]; 
     
      return PopScope(
