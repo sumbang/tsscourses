@@ -7,7 +7,7 @@ import 'package:tsscourses/core/sizeconfig.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:tsscourses/domain/entities/formation.dart';
 import 'package:tsscourses/domain/entities/lesson.dart';
-import 'package:tsscourses/presentation/components/widgets/chapitre_widget.dart';
+import 'package:tsscourses/presentation/components/widgets/chapitre_widget_pc.dart';
 import 'package:tsscourses/presentation/components/widgets/lesson_widget.dart';
 
 class LearningScreenPc extends StatefulHookConsumerWidget {
@@ -34,7 +34,7 @@ class LearningScreenPcState extends ConsumerState<LearningScreenPc> {
 
         for(int j = 0; j < formation.contenus[i].chapitres.length; j++) {
             
-            liste.add(ChapitreWidget(formation: formation, lesson: formation.contenus[i], item: formation.contenus[i].chapitres[j],));
+            liste.add(ChapitreWidgetPc(formation: formation, lesson: formation.contenus[i], item: formation.contenus[i].chapitres[j],));
         }
 
     }
@@ -140,7 +140,7 @@ class LearningScreenPcState extends ConsumerState<LearningScreenPc> {
                                   return LessonWidget(item: item,);
                                 },
                                 body: Column(
-                                  children: item.chapitres.map((e) => ChapitreWidget(formation: formation, lesson: item, item: e)).toList(),
+                                  children: item.chapitres.map((e) => ChapitreWidgetPc(formation: formation, lesson: item, item: e)).toList(),
                                 ),
                                 isExpanded: item.expanded,
                               );

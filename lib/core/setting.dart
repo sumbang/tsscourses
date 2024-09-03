@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:tsscourses/core/sizeconfig.dart';
 
 class Setting {
 
@@ -65,6 +66,14 @@ class Setting {
     String minute = min.toString().length <= 1 ? "0$min" : "$min";
     String second = sec.toString().length <= 1 ? "0$sec" : "$sec";
     return "$minute : $second";
+}
+
+static int goodSize() {
+  if(SizeConfig.taille == 1) return 1;
+  else if(SizeConfig.taille == 2) return 2;
+  else if(SizeConfig.taille == 3) return 3;
+  else if(SizeConfig.taille == 4) return 4;
+  else return 5;
 }
 
 

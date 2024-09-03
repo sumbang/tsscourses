@@ -14,6 +14,8 @@ class SizeConfig {
   static bool isMobilePortrait = false;
   static bool isMobile = false;
   static bool isSmallScreen = false;
+  static String taille = "1";
+  
 
   void init(BoxConstraints constraints, Orientation orientation) {
    
@@ -37,6 +39,13 @@ class SizeConfig {
        if (_screenWidth < 400)  isSmallScreen = true;
        else isSmallScreen = false;
 
+       if(_screenWidth >= 0 && _screenWidth <= 500) taille = "1";
+       else if(_screenWidth > 500  && _screenWidth <= 800) taille = "2";
+       else if(_screenWidth > 800  && _screenWidth <= 1200) taille = "3";
+       else if(_screenWidth > 1200  && _screenWidth <= 1600) taille = "4";
+       else if(_screenWidth > 1600) taille = "5";
+
+
     } else {
       _screenWidth = constraints.maxHeight;
       _screenHeight = constraints.maxWidth;
@@ -48,6 +57,13 @@ class SizeConfig {
 
       if (_screenWidth < 400)  isSmallScreen = true;
       else isSmallScreen = false;
+
+       if(_screenWidth >= 0 && _screenWidth <= 460) taille = "1";
+       else if(_screenWidth > 460  && _screenWidth <= 700) taille = "2";
+       else if(_screenWidth > 700  && _screenWidth <= 1000) taille = "3";
+       else if(_screenWidth > 1000  && _screenWidth <= 1500) taille = "4";
+       else if(_screenWidth > 1500) taille = "5";
+
 
     }
 

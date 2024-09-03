@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:isolate';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -42,7 +41,6 @@ class ChapitreWidgetPcState  extends ConsumerState<ChapitreWidgetPc>  {
     required this.formation
   }): super();
 
- ReceivePort _port = ReceivePort();
  String currentUser = "";
 
  getUser() async {
