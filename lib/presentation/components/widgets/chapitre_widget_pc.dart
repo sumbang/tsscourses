@@ -7,7 +7,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:progress_dialog_fork/progress_dialog_fork.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:tsscourses/core/popup_singleton.dart';
 import 'package:tsscourses/core/setting.dart';
 import 'package:tsscourses/core/vimeo.dart';
@@ -15,7 +14,7 @@ import 'package:tsscourses/domain/entities/chapitre.dart';
 import 'package:tsscourses/domain/entities/formation.dart';
 import 'package:tsscourses/domain/entities/lesson.dart';
 import 'package:tsscourses/presentation/components/view_models/data_view_model.dart';
-import 'package:tsscourses/presentation/screens/commons/player_online_screen.dart';
+import 'package:tsscourses/presentation/screens/commons/player_online_pc_screen.dart';
 
 class ChapitreWidgetPc extends StatefulHookConsumerWidget {
 
@@ -89,7 +88,7 @@ playerLinkGenerator(String video) async {
               children: result.files.map((e) => GestureDetector(onTap:(){ 
                  Navigator.of(context).pop();
                  PopupSingleton mySingleton = PopupSingleton(); mySingleton.setPage(1);
-                 Navigator.push(context,MaterialPageRoute(builder: (_) => PlayerOnlineScreen(e,item.titre, item.id, lesson.id, formation.id.toString())), ); 
+                 Navigator.push(context,MaterialPageRoute(builder: (_) => PlayerOnlinePcScreen(e,item.titre, item.id, lesson.id, formation.id.toString())), ); 
                 }, 
               child: ListTile(title : Text("${e.quality} ${e.publicName} - ${e.sizeShort} ".toUpperCase(), style: const TextStyle(fontFamily: 'Candara', fontWeight: FontWeight.normal, height: 1.5, fontSize: 15.0),textAlign: TextAlign.left)))).toList(),
             ),
@@ -158,7 +157,7 @@ Widget build(BuildContext context) {
                          Expanded(
                           flex: 1,
                           child: Center(
-                          child:  (kIsWeb) ? Container() : IconButton(
+                          child:  IconButton(
                                     icon: const Icon(Icons.play_arrow),
                                     onPressed: () {
                                       playerLinkGenerator(item.video);

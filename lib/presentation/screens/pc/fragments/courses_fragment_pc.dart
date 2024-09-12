@@ -6,7 +6,6 @@ import 'package:tsscourses/domain/entities/formation.dart';
 import 'package:tsscourses/presentation/components/view_models/data_view_model.dart';
 import 'package:tsscourses/presentation/components/widgets/course_box_pc.dart';
 import 'package:tsscourses/presentation/components/widgets/empty_data.dart';
-import 'package:tsscourses/presentation/components/widgets/two_dimension_scrool.dart';
 
 class CoursesFragmentPc extends StatefulHookConsumerWidget {  
   
