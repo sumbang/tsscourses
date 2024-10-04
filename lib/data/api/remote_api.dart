@@ -94,7 +94,6 @@ class RemoteApi  {
     else {
 
       try { 
-         print("token : ${token}");
         final response = await Dio().get('$url/comptes/free-courses', options: Options(headers: {'Authorization': 'Bearer $token','Content-Type':'application/json'}, ),);
         final results = List<Map<String, dynamic>>.from(response.data);
         
@@ -150,8 +149,6 @@ class RemoteApi  {
 
       try { 
       
-
-         print("token1 : ${token}");
         final response = await Dio().get('$url/comptes/my-courses', options: Options(headers: {'Authorization': 'Bearer $token','Content-Type':'application/json'}, ),);
         final results = List<Map<String, dynamic>>.from(response.data);
         
@@ -270,9 +267,10 @@ class RemoteApi  {
       return Vimeo.fromJson(response.data);
     }
 
-  on DioError  catch(err) {  throw MessageResponse.fromJson(err.response?.data); }   
+  on DioError  catch(err) {   print("erreur : "+err.response.toString());
+     throw MessageResponse.fromJson(err.response?.data); }   
 
-    on SocketException  catch(err) { throw const MessageResponse(message: 'Please check your connection');  } 
+    on SocketException  catch(err) { print("erreur : "+err.toString()); throw const MessageResponse(message: 'Please check your connection');  } 
 
   }
 

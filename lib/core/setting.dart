@@ -7,7 +7,7 @@ class Setting {
 
   static const String appName = 'Tss Performance';
   static const String appName_web = 'Tss Performance, A chacun son tableau de bord';
-  static const String currenversion = '1.0.0';
+  static const String currenversion = '1.0.1';
   static const String plateforme = '1';
   static const String plateforme_web = '2';
 
@@ -15,8 +15,8 @@ class Setting {
   static const desktopWidth = 1400;
   static const int paiement = 1; //1 desactive les paiements, 0 laisser les paiements
   
-  static const version_name_short = '1.0.0';
-  static const version_name = 'Version 1.0.0 - © 2024 Tss Performance';
+  static const version_name_short = '1.0.1';
+  static const version_name = 'Version 1.0.1 - © 2024 Tss Performance';
 
   static String getDate(String jour) {
     List<String> dat1 = jour.split(" ");

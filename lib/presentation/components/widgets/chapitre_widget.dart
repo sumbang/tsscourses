@@ -110,7 +110,7 @@ download(String lien) async {
  // var database = await openDatabase('wouri_bd.db');
   //final db = await database;
   final Database database = await SqlLiteService().database;
-  final List<Map<String, dynamic>> maps = await database.rawQuery('SELECT * FROM Download WHERE id=? ', [item.id]);
+  final List<Map<String, dynamic>> maps = await database.rawQuery('SELECT * FROM Download WHERE movie=? ', [item.id]);
 
   List<Download> movie2 = List.generate(maps.length, (i) {
       return Download(
@@ -334,7 +334,7 @@ Widget build(BuildContext context) {
                          Expanded(
                           flex: 1,
                           child: Center(
-                          child:  (kIsWeb) ? Container() : IconButton(
+                          child: IconButton(
                                     icon: const Icon(Icons.download_sharp),
                                     onPressed: () {
                                       downloadLinkGenerator(item.video);

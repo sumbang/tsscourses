@@ -2,39 +2,35 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_download_manager/flutter_download_manager.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:progress_dialog_fork/progress_dialog_fork.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:tsscourses/core/destination.dart';
 import 'package:tsscourses/core/setting.dart';
-import 'package:tsscourses/core/sql_service.dart';
 import 'package:tsscourses/data/models/requests/logout_request.dart';
 import 'package:tsscourses/domain/entities/message.dart';
 import 'package:tsscourses/presentation/components/view_models/data_view_model.dart';
 import 'package:tsscourses/presentation/components/widgets/alerte_action.dart';
 import 'package:tsscourses/presentation/components/widgets/alerte_box.dart';
-import 'package:tsscourses/presentation/screens/commons/onboarding_pc_screen.dart';
-import 'package:tsscourses/presentation/screens/pc/fragments/courses_fragment_pc.dart';
-import 'package:tsscourses/presentation/screens/pc/fragments/download_fragment_pc.dart';
-import 'package:tsscourses/presentation/screens/pc/fragments/free_fragment_pc.dart';
+import 'package:tsscourses/presentation/screens/commons/onboarding_web_screen.dart';
+import 'package:tsscourses/presentation/screens/web/fragments/courses_fragment_web.dart';
+import 'package:tsscourses/presentation/screens/web/fragments/free_fragment_web.dart';
 
 
-class DashboardScreenPc extends StatefulHookConsumerWidget {
+class DashboardScreenWeb extends StatefulHookConsumerWidget {
   int currentTab;
-   DashboardScreenPc(this.currentTab);
+   DashboardScreenWeb(this.currentTab);
   @override
-  DashboardScreenPcState createState() =>new DashboardScreenPcState(this.currentTab);
+  DashboardScreenWebState createState() =>new DashboardScreenWebState(this.currentTab);
 }
 
-class DashboardScreenPcState extends ConsumerState<DashboardScreenPc> {
+class DashboardScreenWebState extends ConsumerState<DashboardScreenWeb> {
 
   int currentTab;
-  DashboardScreenPcState(this.currentTab);
+ DashboardScreenWebState(this.currentTab);
   GetIt getIt = GetIt.instance;
 
 @override
@@ -71,11 +67,9 @@ void initState()  {
   _getDrawerItemWidget(int pos) {
     switch (pos) {
       case 0:
-        return CoursesFragmentPc();
+        return CoursesFragmentWeb();
       case 1:
-        return FreeFragmentPc();
-      case 2:
-        return DownloadFragmentPc();
+        return FreeFragmentWeb();
       default:
     }
   }
@@ -93,8 +87,6 @@ void initState()  {
         return AppLocalizations.of(context)!.movie_1;
       case 1:
         return AppLocalizations.of(context)!.movie_2;
-      case 2:
-        return AppLocalizations.of(context)!.movie_3;
       default: 
         return "";
     }
@@ -115,17 +107,6 @@ void initState()  {
 
     Future<Message> retour = ref.read(dataViewModelProvider).setLogout(logoutRequest);
 
-    final Database database = await SqlLiteService().database;
-    await database.delete('Download');
-
-    DownloadManager downloadManager = DownloadManager();
-
-    List<DownloadTask>? getTasks = await downloadManager.getAllDownloads();
-     getTasks!.forEach((_task) {
-      //downloadManager.removeDownload()
-      //downloadManager.remove(taskId: _task.taskId, shouldDeleteContent: true);
-     });
-
     retour.then((result) {
 
         pr.hide().then((isHidden) {
@@ -141,7 +122,7 @@ void initState()  {
 
         Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => OnboardingPcScreen()),
+                      MaterialPageRoute(builder: (_) => OnboardingWebScreen()),
                     );
 
     
@@ -188,8 +169,7 @@ void initState()  {
       
     final List<Destination> allDestinations = <Destination>[
       Destination(AppLocalizations.of(context)!.movie_1, Icons.list, Colors.white),
-      Destination(AppLocalizations.of(context)!.movie_2, Icons.movie, Colors.white),
-      Destination(AppLocalizations.of(context)!.movie_3, Icons.download, Colors.white)
+      Destination(AppLocalizations.of(context)!.movie_2, Icons.movie, Colors.white)
     ]; 
     
      return PopScope(

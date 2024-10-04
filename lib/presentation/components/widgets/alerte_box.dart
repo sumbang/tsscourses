@@ -19,8 +19,8 @@ Future<dynamic> AlerteBox({
     return showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text(title,style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0,fontFamily: 'Candara', color: Setting.bgColor)),
-          content: Text(description,style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 18.0,fontFamily: 'Candara',height: 1.5,  color: Setting.bgColor)),
+          title: Text(title,style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0,fontFamily: 'Candara', color: Colors.orange)),
+          content: Text(description,style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 18.0,fontFamily: 'Candara',height: 1.5,  color: Colors.orange)),
           actions: actions,
         ),
     );
@@ -36,8 +36,8 @@ Future<dynamic> AlerteBox({
     return showCupertinoDialog(
         context: context,
         builder: (context) => CupertinoAlertDialog(
-          title: Text(title,style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0,fontFamily: 'Candara', color: Setting.bgColor)),
-          content: Text(description,style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 18.0,fontFamily: 'Candara',height: 1.5,  color: Setting.bgColor)),
+          title: Text(title,style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0,fontFamily: 'Candara', color: Colors.orange)),
+          content: Text(description,style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 18.0,fontFamily: 'Candara',height: 1.5,  color: Colors.orange)),
           actions: actions,
         ),
     );
@@ -49,8 +49,8 @@ Future<dynamic> AlerteBox({
     return showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text(title,style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0,fontFamily: 'Candara', color: Setting.bgColor)),
-          content: Text(description,style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 18.0,fontFamily: 'Candara',height: 1.5,  color: Setting.bgColor)),
+          title: Text(title,style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0,fontFamily: 'Candara', color: Colors.orange)),
+          content: Text(description,style: const TextStyle(fontWeight: FontWeight.normal, fontSize: 18.0,fontFamily: 'Candara',height: 1.5,  color: Colors.orange)),
           actions: actions,
         ),
     );

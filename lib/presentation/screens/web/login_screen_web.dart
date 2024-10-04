@@ -17,22 +17,22 @@ import 'package:tsscourses/presentation/components/widgets/alerte_box.dart';
 import 'package:tsscourses/presentation/components/widgets/bouton.dart';
 import 'package:tsscourses/presentation/components/widgets/input.dart';
 import 'package:tsscourses/presentation/components/widgets/password.dart';
-import 'package:tsscourses/presentation/screens/pc/dashboard_screen_pc.dart';
 import 'package:flutter_sliding_toast/flutter_sliding_toast.dart';
+import 'package:tsscourses/presentation/screens/web/dashboard_screen_web.dart';
 
 import '../../../../core/setting.dart';
 import '../../../../core/sizeconfig.dart';
 import '../../../../domain/entities/login.dart';
 
-class LoginScreenPc extends StatefulHookConsumerWidget {
+class LoginScreenWeb extends StatefulHookConsumerWidget {
 
-  LoginScreenPc();
+  LoginScreenWeb();
 
   @override
-  LoginScreenPcState createState() => LoginScreenPcState();
+  LoginScreenWebState createState() => LoginScreenWebState();
 }
 
-class LoginScreenPcState extends ConsumerState<LoginScreenPc> {  
+class LoginScreenWebState extends ConsumerState<LoginScreenWeb> {  
 
   final _loginController = TextEditingController();
   final _pwdController = TextEditingController();
@@ -98,7 +98,7 @@ class LoginScreenPcState extends ConsumerState<LoginScreenPc> {
         prefs.setString("statut",result.statut.toString());
         prefs.setString("abonnement",result.abonnement.toString());
 
-        Navigator.push(context, MaterialPageRoute(builder: (_) =>  DashboardScreenPc(0)), );           
+        Navigator.push(context, MaterialPageRoute(builder: (_) =>  DashboardScreenWeb(0)), );           
 
       }).catchError((e) {
 

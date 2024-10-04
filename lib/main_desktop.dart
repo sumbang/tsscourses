@@ -38,8 +38,10 @@ Future<void> main() async {
 
     await Upgrader.clearSavedSettings();
 
-   // window.document.onContextMenu.listen((evt) => evt.preventDefault());
-     
+    final appDocumentDirectory = await getApplicationDocumentsDirectory();
+    Hive.init(appDocumentDirectory.path);
+    Hive.registerAdapter(ApiResponseBoxAdapter());
+  
     HttpOverrides.global = MyHttpOverrides();
     setupLocator();
     

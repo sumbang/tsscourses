@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -109,6 +110,11 @@ void initState()  {
       );
 
     Future<Message> retour = ref.read(dataViewModelProvider).setLogout(logoutRequest);
+
+    List<DownloadTask>? getTasks = await FlutterDownloader.loadTasks();
+     getTasks!.forEach((_task) {
+      FlutterDownloader.remove(taskId: _task.taskId, shouldDeleteContent: true);
+    });
 
     retour.then((result) {
 

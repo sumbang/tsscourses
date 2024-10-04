@@ -3,7 +3,7 @@ import UIKit
 import GoogleCast
 import flutter_downloader
 
-@UIApplicationMain
+@main
 @objc class AppDelegate: FlutterAppDelegate, GCKLoggerDelegate {
     
   let kReceiverAppID = kGCKDefaultMediaReceiverApplicationID
