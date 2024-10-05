@@ -74,6 +74,7 @@ dependencies:
   pod_player: ^0.2.2
   polar_tab_bar: ^0.0.2
   progress_dialog_fork: ^1.0.0
+  rename_app: ^1.6.1
   shared_preferences: ^2.2.3
   smooth_video_progress:
     path: ./dependencies/smooth_video_progress/

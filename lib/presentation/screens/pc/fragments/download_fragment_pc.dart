@@ -297,11 +297,26 @@ class ListItem extends StatelessWidget {
                           }
                           return Text("$value", style: TextStyle(fontSize: 16));
                         })
-                    : IconButton(
-                        onPressed: () {
-                          onDownloadPlayPausedPressed(download.lien);
-                        },
-                        icon: const Icon(Icons.restart_alt))
+                    : Row(crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                    icon: const Icon(Icons.play_circle),
+                                    onPressed: () {
+                                      Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (_) => OfflinePlayerScreen(
+                                                        savedDir, download.filename)),
+                                              );
+                                    },
+                                  ),
+                                  const SizedBox(width: 5,), 
+                                  IconButton(
+                                  onPressed: () {
+                                    onDelete(download.lien);
+                                  },
+                                  icon: const Icon(Icons.delete))
+                              ],)
               ],
             ), // if (widget.item.isDownloadingOrPaused)
             if (downloadTask != null && !downloadTask!.status.value.isCompleted)
