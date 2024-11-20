@@ -25,6 +25,7 @@ import 'package:upgrader/upgrader.dart';
 import 'core/setting.dart';
 import 'core/sizeconfig.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+//import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 
 Future<void> main() async {
@@ -44,6 +45,11 @@ Future<void> main() async {
   
     HttpOverrides.global = MyHttpOverrides();
     setupLocator();
+
+      // Initialisation pour les applications de bureau
+      // plus besoin de ceci, tout se gere directement dans sqlite service
+    //sqfliteFfiInit();
+    //databaseFactory = databaseFactoryFfi;
     
     runApp(
       ProviderScope(child: MyApp())

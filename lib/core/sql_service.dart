@@ -1,6 +1,11 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+//import 'package:sqlite3_flutter_libs/sqlite3_flutter_libs.dart';
+//import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+//import 'dart:io' as io;
+//import 'package:path/path.dart' as p;
+
 class SqlLiteService {
   String dBName = 'tss_data.db';
   int dBVersion = 1;
@@ -20,6 +25,7 @@ class SqlLiteService {
   Future<Database> _initDatabase() async {
     // Set the version. This executes the onCreate function and provides a
     // path to perform database upgrades and downgrades.
+    // Remplacer par getDB1 pour windows
     Database db = await _getDB();
 
     return db;
@@ -35,6 +41,22 @@ class SqlLiteService {
       //onConfigure: (db) async => await db.execute('PRAGMA foreign_keys = ON'),
     );
   }
+
+  /*Future<Database> _getDB1() async {
+    // Initialisation pour les applications de bureau
+    sqfliteFfiInit();
+    databaseFactory = databaseFactoryFfi;
+    final io.Directory appDocumentsDir =
+        await getApplicationDocumentsDirectory();
+    String dbPath = p.join(appDocumentsDir.path, "databases", dBName);
+    var db = await databaseFactory.openDatabase(
+      dbPath,
+    );
+
+    await _onCreate(db, dBVersion);
+
+    return db;
+  } */
 
   // create tables
   Future<void> _onCreate(Database db, int version) async {

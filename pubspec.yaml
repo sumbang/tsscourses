@@ -105,6 +105,8 @@ flutter_launcher_icons:
     image_path: "img/playstore.png"
 
 dev_dependencies:
+#  sqflite_common_ffi: ^2.3.3  # pour windows
+#  sqlite3_flutter_libs: ^0.5.21 # pour windows 
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter

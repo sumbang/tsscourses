@@ -422,7 +422,15 @@ class DownloadFragmentState extends State<DownloadFragment> {
                   child: FutureBuilder<List<Download>>(
                      future: _listDownload,
                      builder: (context, snapshot) {
-                       if (snapshot.hasData) {
+                       if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const Center(
+                            child: CircularProgressIndicator(color: Setting.primaryColor),
+                          );
+                        } else if (snapshot.hasError) {
+                          return Center(
+                            child: Text("Erreur: ${snapshot.error}"),
+                          );
+                        } else if (snapshot.hasData) {
                          if (snapshot.data!.length != 0) {
                            List<Widget> maliste = [];
                   
@@ -639,13 +647,9 @@ class DownloadFragmentState extends State<DownloadFragment> {
                              ),
                            );
                          }
-                       } else {
-                         return const Center(
-                           child: Center(
-                             child: CircularProgressIndicator(color: Setting.primaryColor),
-                           ),
-                         );
-                       }
+                       } 
+                        return const SizedBox.shrink(); // Par défaut, si aucun état ne correspond
+
                      })));  
 
 
